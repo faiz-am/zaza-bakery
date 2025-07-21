@@ -11,7 +11,7 @@ if not os.path.exists(UPLOAD_FOLDER):
 
 
 app = Flask(__name__)
-app.secret_key = os.environ.get("SECRET_KEY", "zazab_supersecret123")  # Ganti dengan kunci rahasia yang kuat
+app.secret_key = os.environ.get("SECRET_KEY", "zazabakey12345676276")  # Ganti dengan kunci rahasia yang kuat
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
