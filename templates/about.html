@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-9 col-md-10">
+      <div class="bg-white rounded-4 shadow-sm p-4 p-md-5">
+        
+        <!-- Judul -->
+        <h2 class="text-center fw-bold text-pink mb-4">Tentang Kami</h2>
+
+        <!-- Konten Tentang -->
+        <div class="text-muted fs-6 lh-lg" style="text-align: justify;">
+          {% for item in about %}
+            <p>{{ item.konten | safe }}</p>
+          {% endfor %}
+        </div>
+
+        <!-- Pembatas -->
+        <hr class="my-5">
+
+        <!-- Lokasi Kami -->
+        <h4 class="text-center fw-semibold text-dark mb-3">Lokasi Kami</h4>
+        <div class="ratio ratio-16x9 rounded-3 overflow-hidden shadow-sm">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31693.31213201236!2d107.6098123!3d-6.9147444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e7c1e376ded9%3A0xdddddd!2sContoh%20Tempat!5e0!3m2!1sid!2sid!4v1234567890"
+            width="100%" height="450" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

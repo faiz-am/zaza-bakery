@@ -1,0 +1,47 @@
+{% extends "admin/base_admin.html" %}
+{% block content %}
+<div class="container">
+  <h2 class="mb-4">Kelola About</h2>
+
+  <!-- Form Tambah Konten -->
+  <div class="card mb-4 shadow-sm">
+    <div class="card-body">
+      <form method="post">
+        <div class="mb-3">
+          <textarea name="konten" class="form-control" placeholder="Isi konten tentang kami" rows="4" required></textarea>
+        </div>
+        <div class="text-end">
+          <button type="submit" class="btn btn-success">Tambah</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Tabel Konten About -->
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover align-middle">
+          <thead class="table-dark text-center">
+            <tr>
+              <th>Konten</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for a in about %}
+            <tr>
+              <td>{{ a.konten }}</td>
+              <td class="text-center">
+                <a href="{{ url_for('edit_about', id=a.id) }}" class="btn btn-sm btn-primary">Edit</a>
+                <a href="{{ url_for('delete_about', id=a.id) }}" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus konten ini?')">Hapus</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

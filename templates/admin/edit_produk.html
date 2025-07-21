@@ -1,0 +1,29 @@
+{% extends "admin/base_admin.html" %}
+{% block content %}
+<div class="container mt-4">
+  <h2 class="h4 mb-4">Edit Produk</h2>
+  <form method="post">
+    <div class="mb-3">
+  <label for="gambar" class="form-label">Gambar Produk (biarkan kosong jika tidak ingin diubah)</label>
+  <input type="file" name="gambar" id="gambar" class="form-control">
+</div>
+{% if produk.gambar %}
+  <p class="text-muted">Gambar saat ini: {{ produk.gambar }}</p>
+{% endif %}
+
+    <div class="mb-3">
+      <label for="nama" class="form-label">Nama Produk</label>
+      <input type="text" name="nama" id="nama" class="form-control" value="{{ produk.nama }}" required>
+    </div>
+    <div class="mb-3">
+      <label for="deskripsi" class="form-label">Deskripsi</label>
+      <textarea name="deskripsi" id="deskripsi" class="form-control" rows="4" required>{{ produk.deskripsi }}</textarea>
+    </div>
+    <div class="mb-3">
+      <label for="harga" class="form-label">Harga</label>
+      <input type="number" name="harga" id="harga" class="form-control" value="{{ produk.harga }}" required>
+    </div>
+    <button type="submit" class="btn btn-success">Update</button>
+  </form>
+</div>
+{% endblock %}

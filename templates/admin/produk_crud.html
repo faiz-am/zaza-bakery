@@ -1,0 +1,70 @@
+{% extends "admin/base_admin.html" %}
+{% block content %}
+<div class="container">
+  <h2 class="mb-4">Kelola Produk</h2>
+
+  <!-- Form Tambah Produk -->
+  <div class="card mb-4 shadow-sm">
+    <div class="card-body">
+      <form method="post" enctype="multipart/form-data">
+        <div class="row g-3">
+          <div class="col-md-3">
+            <input type="text" name="nama" class="form-control" placeholder="Nama Produk" required>
+          </div>
+          <div class="col-md-2">
+            <input type="number" name="harga" class="form-control" placeholder="Harga (Rp)" required>
+          </div>
+          <div class="col-md-4">
+            <textarea name="deskripsi" class="form-control" placeholder="Deskripsi Produk" rows="1" required></textarea>
+          </div>
+          <div class="col-md-3">
+            <input type="file" name="gambar" class="form-control" accept="image/*" required>
+          </div>
+          <div class="col-12 text-end">
+            <button type="submit" class="btn btn-success">Tambah Produk</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Tabel Produk -->
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover align-middle">
+          <thead class="table-dark text-center">
+            <tr>
+              <th>Gambar</th>
+              <th>Nama</th>
+              <th>Deskripsi</th>
+              <th>Harga</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for p in produk %}
+            <tr>
+              <td class="text-center" style="width: 80px;">
+                {% if p.gambar %}
+                <img src="{{ url_for('static', filename='images/produk/' + p.gambar) }}" alt="{{ p.nama }}" class="img-fluid" style="max-height: 60px;">
+                {% else %}
+                <span class="text-muted small">Tidak ada</span>
+                {% endif %}
+              </td>
+              <td>{{ p.nama }}</td>
+              <td>{{ p.deskripsi }}</td>
+              <td>Rp {{ "{:,.0f}".format(p.harga) }}</td>
+              <td class="text-center">
+                <a href="/admin/produk/edit/{{ p.id }}" class="btn btn-sm btn-primary">Edit</a>
+                <a href="/admin/produk/delete/{{ p.id }}" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus produk ini?')">Hapus</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

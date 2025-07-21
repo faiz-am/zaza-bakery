@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="text-center mt-5 mb-4">
+  <h2 class="fw-bold text-pink">Menu Produk</h2>
+  <p class="text-muted">Berbagai pilihan menu terbaik kami, dibuat dengan cinta dan bahan berkualitas.</p>
+</div>
+
+<div class="container">
+  <div class="row g-4">
+    {% for item in produk %}
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+      <div class="card h-100 shadow-sm border-0">
+        
+        {% if item.gambar %}
+        <img src="{{ url_for('static', filename='images/produk/' ~ item.gambar) }}" 
+             class="card-img-top" 
+             alt="{{ item.nama }}" 
+             style="object-fit: cover; height: 200px;">
+        {% endif %}
+        
+        <div class="card-body text-center">
+          <h5 class="card-title text-capitalize fw-semibold text-dark mb-2">{{ item.nama }}</h5>
+          <p class="text-muted small mb-2">{{ item.deskripsi }}</p>
+          <div class="fw-bold text-success">Rp {{ "{:,.0f}".format(item.harga) }}</div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

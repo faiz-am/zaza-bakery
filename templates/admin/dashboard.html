@@ -1,0 +1,40 @@
+{% extends "admin/base_admin.html" %}
+{% block content %}
+<div class="container mt-4">
+  <h2 class="h4 mb-4">Admin Dashboard</h2>
+  <div class="row g-4">
+    <div class="col-md-4">
+      <a href="/admin/produk" class="text-decoration-none">
+        <div class="card border-primary h-100">
+          <div class="card-body text-primary">
+            <h5 class="card-title">Kelola Produk</h5>
+            <p class="card-text">Tambah, ubah, atau hapus produk.</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-md-4">
+      <a href="/admin/about" class="text-decoration-none">
+        <div class="card border-success h-100">
+          <div class="card-body text-success">
+            <h5 class="card-title">Kelola About</h5>
+            <p class="card-text">Edit konten tentang kami.</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-md-4">
+      <a href="/admin/contact" class="text-decoration-none">
+        <div class="card border-warning h-100">
+          <div class="card-body text-warning">
+            <h5 class="card-title">Kelola Contact</h5>
+            <p class="card-text">Perbarui informasi kontak.</p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock %}

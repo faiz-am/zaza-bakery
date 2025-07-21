@@ -1,0 +1,59 @@
+{% extends "admin/base_admin.html" %}
+{% block content %}
+<div class="container">
+  <h2 class="mb-4">Kelola Kontak</h2>
+
+  <!-- Form Tambah Kontak -->
+  <div class="card mb-4 shadow-sm">
+    <div class="card-body">
+      <form method="post">
+        <div class="row g-3">
+          <div class="col-md-4">
+            <input type="text" name="alamat" class="form-control" placeholder="Alamat" required>
+          </div>
+          <div class="col-md-4">
+            <input type="text" name="telepon" class="form-control" placeholder="Telepon" required>
+          </div>
+          <div class="col-md-4">
+            <input type="email" name="email" class="form-control" placeholder="Email" required>
+          </div>
+          <div class="col-12 text-end">
+            <button type="submit" class="btn btn-success">Tambah</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Tabel Kontak -->
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover align-middle">
+          <thead class="table-dark text-center">
+            <tr>
+              <th>Alamat</th>
+              <th>Telepon</th>
+              <th>Email</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for c in contact %}
+            <tr>
+              <td>{{ c.alamat }}</td>
+              <td>{{ c.telepon }}</td>
+              <td>{{ c.email }}</td>
+              <td class="text-center">
+                <a href="{{ url_for('edit_contact', id=c.id) }}" class="btn btn-sm btn-primary">Edit</a>
+                <a href="{{ url_for('delete_contact', id=c.id) }}" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus data kontak ini?')">Hapus</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

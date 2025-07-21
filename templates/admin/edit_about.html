@@ -1,0 +1,13 @@
+{% extends "admin/base_admin.html" %}
+{% block content %}
+<div class="container mt-4">
+  <h2 class="h4 mb-4">Edit About</h2>
+  <form method="post">
+    <div class="mb-3">
+      <label for="konten" class="form-label">Konten</label>
+      <textarea name="konten" id="konten" class="form-control" rows="6" required>{{ about.konten }}</textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+  </form>
+</div>
+{% endblock %}
