@@ -42,9 +42,17 @@ def home():
 
 @app.route('/about')
 def about():
-    cursor.execute("SELECT * FROM about")
-    data = cursor.fetchall()
-    return render_template('about.html', about=data)
+    try:
+        db.rollback()  # Pastikan transaksi bersih sebelum query baru
+        cursor.execute("SELECT * FROM about")
+        data = cursor.fetchall()
+        return render_template('about.html', about=data)
+    except Exception as e:
+        db.rollback()  # Reset koneksi jika error
+        print("Error query /about:", e)
+        flash("Terjadi kesalahan saat mengambil data.")
+        return render_template('about.html', about=[])
+
 
 @app.route('/contact')
 def contact():
