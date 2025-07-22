@@ -23,3 +23,5 @@ CREATE TABLE IF NOT EXISTS contact (
     telepon TEXT,
     email TEXT
 );
+
+INSERT INTO admin (username, password) VALUES ('admin123', 'admin1234565432123456');
