@@ -6,7 +6,7 @@ services:
     startCommand: gunicorn app:app
     envVars:
       - key: DATABASE_URL
-        value: postgresql://zazabakery:ChUPeGlCVnaUytTrHNaLRs0p8RVkoDxS@dpg-d1vahlbuibrs7397vq40-a.oregon-postgres.render.com/zazab
+        value: postgresql://zazabakery:ktvuWxKbjKBXIxvOjiEyXMxpnpOykWji@dpg-d2lgqjje5dus738qbeg0-a.oregon-postgres.render.com/zazab_vxvf
       - key: SECRET_KEY
         value: zazabakey12345676276
     plan: free
